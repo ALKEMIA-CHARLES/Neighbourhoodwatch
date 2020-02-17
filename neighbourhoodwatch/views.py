@@ -25,3 +25,8 @@ class PostListView(ListView):
     template_name = "main/index.html"
     context_object_name = "posts"
     ordering =['-post_date']
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = "main/postform.html"
+    fields = ['title', 'message']

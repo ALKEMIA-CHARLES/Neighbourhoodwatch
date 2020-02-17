@@ -32,6 +32,9 @@ class Post(models.Model):
     masterpost = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     
+    def get_absolute_url(self):
+        return reverse('index', kwargs={'pk':self.pk})
+    
     @classmethod
     def show_posts(cls):
         return cls.objects.order("post_date")[::1]

@@ -4,7 +4,9 @@
     {% for post in posts %}
     <div class="card m-3 p-3">
         <div class="card-body">
-            <img src="{{post.image.url}}" class="img-fluid" /><p>{{post.title}}</p>
+            <p>{{user.username}}</p>
+            <img src="{{post.image.url}}" class="img-fluid" />
+            <p>{{post.title}}</p>
             <p>{{post.masterkey.username}}</p>
             <p>{{post.message}}</p>
             <p>{{project.post_date}}</p>
