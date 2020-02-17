@@ -1,4 +1,4 @@
-{%extends "auth/base.html"%}
+{%extends "main/base.html"%}
 {% load crispy_forms_tags %}
 {%block content%}
 
@@ -16,7 +16,7 @@
     </form>
     <div class="border-top pt-3">
         <small class="text-muted">
-            Already Have an Account? <a class="ml-2" href="#">Go Login</a>
+            Already Have an Account? <a class="ml-2" href="{% url 'login' %}">Go Login</a>
         </small>
     </div>
 </div>
