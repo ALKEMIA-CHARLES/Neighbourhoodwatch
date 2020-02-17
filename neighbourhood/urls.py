@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^register/$', user_views.register, name='register'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='main/login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(template_name='main/logout.html'), name='logout'),
+     url(r'^profile/$', user_views.profile, name='profile'),
     url(r'', include('neighbourhoodwatch.urls')),
 ]
 

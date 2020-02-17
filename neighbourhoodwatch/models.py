@@ -19,7 +19,6 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="default.jpg", upload_to="pictures")
@@ -33,7 +32,7 @@ class Post(models.Model):
     
     
     def get_absolute_url(self):
-        return reverse('index', kwargs={'pk':self.pk})
+        return reverse('index')
     
     @classmethod
     def show_posts(cls):

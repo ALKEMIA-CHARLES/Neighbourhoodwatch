@@ -4,12 +4,11 @@
     {% for post in posts %}
     <div class="card m-3 p-3">
         <div class="card-body">
-            <p>{{user.username}}</p>
-            <img src="{{post.image.url}}" class="img-fluid" />
+            <p>{{post.masterpost.username}}</p>
             <p>{{post.title}}</p>
-            <p>{{post.masterkey.username}}</p>
+            <img src="{{post.image.url}}" class="img-fluid" />
             <p>{{post.message}}</p>
-            <p>{{project.post_date}}</p>
+            <p>{{post.post_date}}</p>
         </div>
     </div>
     {% endfor %}
