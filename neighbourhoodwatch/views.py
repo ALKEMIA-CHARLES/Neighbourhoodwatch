@@ -37,6 +37,12 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         form.instance.masterpost = self.request.user
         return super().form_valid(form)
 
+class NeighbourhoodlistView(LoginRequiredMixin, ListView):
+    model = Neighbourhood
+    template_name = "main/neighbourhoodlist.html"
+    context_object_name = "neighbourhoods"
+    ordering = ['-post_date']
+
 def profile(request):
     if request.method == "POST":
         form = UserUpdateForm(request.POST,request.FILES, instance=request.user.profile)

@@ -50,4 +50,6 @@ class Neighbourhood(models.Model):
     name = models.CharField(max_length=25)
     population = models.IntegerField()
     masterneighbourhood = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(default="default.jpg", upload_to="pictures")
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
     business = models.ManyToManyField(Business)
