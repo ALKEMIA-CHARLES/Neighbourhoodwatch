@@ -5,6 +5,7 @@
     <div class="card m-3 p-3">
         <div class="card-body">
             <p>{{neighbourhood.name}}</p>
+            <p><a href="{% url 'contactinfo' %}"> Contact information for this area</a></p>
             <img src="{{neighbourhood.image.url}}" class="img-fluid" />
             <p>{{neighbourhood.post_date}}</p>
         </div>

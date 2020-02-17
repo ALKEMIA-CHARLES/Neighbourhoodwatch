@@ -53,3 +53,6 @@ def profile(request):
     else:
         form = UserUpdateForm(instance=request.user.profile)
     return render(request, "main/profile.html", context={"form":form})
+
+def contactinfo(request):
+    return render(request, "main/contactinfo.html")
