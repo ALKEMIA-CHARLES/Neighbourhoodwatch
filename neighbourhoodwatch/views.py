@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.shortcuts import render, redirect,get_object_or_404
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView, DetailView
+from neighbourhoodwatch.models import Post, Profile, Business, Neighbourhood
 # Create your views here.
 
 def register(request):
@@ -16,4 +18,10 @@ def register(request):
             return redirect('login')
     else:
         form = UserCreationForm()
-    return render(request, "auth/signup.html", context={'form': form})
+    return render(request, "main/signup.html", context={'form': form})
+
+class PostListView(ListView):
+    model = Post
+    template_name = "main/index.html"
+    context_object_name = "posts"
+    ordering =['-post_date']

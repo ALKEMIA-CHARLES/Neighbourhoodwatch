@@ -3,7 +3,22 @@ from PIL import Image
 from django.urls import reverse
 from django.contrib.auth.models import User
 from pyuploadcare.dj.models import ImageField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 # Create your models here.
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    print("=========================================[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]=")
+
+    if created:
+        Profile.objects.create(user=instance)
+        print("==========================================")
+
+
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
