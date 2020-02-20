@@ -43,14 +43,44 @@ class NeighbourhoodlistView(LoginRequiredMixin, ListView):
     context_object_name = "neighbourhoods"
     ordering = ['-post_date']
 
+class NeighbourDetailView(LoginRequiredMixin, DetailView):
+    model = Neighbourhood
+    template_name = "main/neighbourhood_detail.html"
+
 class NeighbourCreateView(LoginRequiredMixin, CreateView):
     model = Neighbourhood
     template_name = "main/create_neighbourhood.html"
     fields = ['name', 'image', 'population', 'recommended_by']
 
     def form_valid(self, form):
-        form.instance.masterpost = self.request.user
+        form.instance.recommended_by = self.request.user
         return super().form_valid(form)
+
+class NeighbourUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
+    model = Neighbourhood
+    template_name = "main/create_neighbourhood.html"
+    fields = ['name', 'image', 'population', 'recommended_by']
+
+    def form_valid(self, form):
+        form.instance.recommended_by = self.request.user
+        return super().form_valid(form)
+        
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.recommended_by:
+            return True
+        return False
+
+class NeighbourDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Neighbourhood
+    template_name = 'main/post_confirm_delete.html'
+    success_url = 'neighbourhoodlist'
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.recommended_by:
+            return True
+        return False
 
 def profile(request):
     if request.method == "POST":
@@ -67,5 +97,5 @@ def contactinfo(request):
     return render(request, "main/contactinfo.html")
 
 def businesses(request):
-    kazis = Neighbourhood.objects.all()
-    return render(request, "main/business.html", context={"kazis":kazis})
+    businesses = Business.objects.all()
+    return render(request, "main/business.html", context={"businesses":businesses})

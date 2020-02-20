@@ -2,12 +2,12 @@
 {%block content%}
 <div class="container">
     <div class="card m-3 p-3">
-        {% for kazi in Kazis %}
+        {% for business in businesses %}
         <div class="card-body">
             <h2>Businesses in this neighbourhood</h2>
-            <p>{{kazi.business.name}}</p>
-            <p>{{kazi.business.email}}</p>
-            <p>{{kazi.business.post_date}}</p>
+            <p>{{business.name}}</p>
+            <p>{{business.email}}</p>
+            <p>{{business.post_date}}</p>
         </div>
         {% endfor%}
     </div>

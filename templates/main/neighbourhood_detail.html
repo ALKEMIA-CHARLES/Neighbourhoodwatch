@@ -1,0 +1,20 @@
+{%extends "main/base.html"%}
+{%block content%}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <p>{{object.name}}</p>
+            <p> <a href="{% url 'businesses' object.id %}">View businesses in this neighbourhood</a></p>
+            <img class="img-fluid" src="{{object.image.url}}">
+            <p>{{object.population}}</p>
+            <p>{{object.post_date}}</p>
+            <p>{{object.recommended_by}}</p>
+            {% if object.recommended_by == user %}
+            <a href="{%  url 'neighbourupdate' object.id %}">Update</a>
+            <a href="{%  url 'neighbourdelete' object.id %}">Delete</a>
+
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endblock%}

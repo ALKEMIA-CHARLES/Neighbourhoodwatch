@@ -59,7 +59,8 @@ class Neighbourhood(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('neighbourhoodlist')
+        return reverse('neighbourhood-detail', kwargs={'pk':self.pk})
+        
 
     @classmethod
     def show_businesses(cls):
