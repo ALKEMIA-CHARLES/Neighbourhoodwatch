@@ -43,6 +43,15 @@ class NeighbourhoodlistView(LoginRequiredMixin, ListView):
     context_object_name = "neighbourhoods"
     ordering = ['-post_date']
 
+class NeighbourCreateView(LoginRequiredMixin, CreateView):
+    model = Neighbourhood
+    template_name = "main/create_neighbourhood.html"
+    fields = ['name', 'image', 'population', 'recommended_by']
+
+    def form_valid(self, form):
+        form.instance.masterpost = self.request.user
+        return super().form_valid(form)
+
 def profile(request):
     if request.method == "POST":
         form = UserUpdateForm(request.POST,request.FILES, instance=request.user.profile)
@@ -56,3 +65,7 @@ def profile(request):
 
 def contactinfo(request):
     return render(request, "main/contactinfo.html")
+
+def businesses(request):
+    kazis = Neighbourhood.objects.all()
+    return render(request, "main/business.html", context={"kazis":kazis})

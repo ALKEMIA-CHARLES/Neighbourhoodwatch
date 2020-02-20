@@ -25,6 +25,9 @@
                 <a href="{% url 'neighbourhoodlist' %}">Check the neighbourhoods</a>
             </div>
             <div>
+                <p> <a href="{% url 'neighbourcreate' %}">Create a neighbourhood</a> </p>
+            </div>
+            <div>
                 {% if request.user.is_authenticated %}
                 <div>
                     <a href="{% url 'profile'%}">Profile</a>
