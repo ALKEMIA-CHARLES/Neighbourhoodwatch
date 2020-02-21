@@ -5,9 +5,11 @@
 <section>
     <div class="content-setion">
         <div class="media">
-            <h1 class="account-heading">{{ user.username }}</h1>
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="200" height="121">
             <div class="media-body">
-                <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="200" height="121">
+                <h1 class="account-heading">{{ user.username }}</h1>
+                <p class="text-secondary">{{ user.profile.bio }}</p>
+                <p class="text-secondary">{{ user.profile.age }}</p>
             </div>
         </div>
     </div>

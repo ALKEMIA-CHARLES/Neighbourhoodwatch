@@ -22,6 +22,8 @@ def save_profile(sender, instance, **kwargs):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="default.jpg", upload_to="pictures")
+    bio = models.CharField(max_length=250, null=True)
+    age = models.IntegerField(null=True)
 
 class Post(models.Model):
     image = models.ImageField(default="default.jpg", upload_to="pictures")
