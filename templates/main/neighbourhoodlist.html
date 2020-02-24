@@ -6,7 +6,7 @@
         <div class="card-body">
             <p>{{neighbourhood.name}}</p>
             <p><a href="{% url 'contactinfo' %}"> Contact information for this area</a></p>
-            <p> <a href="{% url 'businesses' %}">View businesses in this neighbourhood</a></p>
+            <p> <a href="{% url 'businesses' neighbourhood.id %}">View businesses in this neighbourhood</a></p>
             <p> <a href=" {% url 'neighbourhood-detail' neighbourhood.id %} ">View Neighbourhood</a></p>
             <img src="{{neighbourhood.image.url}}" class="img-fluid" />
             <p>{{neighbourhood.post_date}}</p>

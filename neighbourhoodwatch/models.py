@@ -40,25 +40,12 @@ class Post(models.Model):
     def show_posts(cls):
         return cls.objects.order("post_date")[::1]
 
-
-class Business(models.Model):
-    name = models.CharField(max_length=25)
-    email = models.EmailField(max_length=250)
-    post_date = models.DateTimeField(auto_now_add=True, null=True)
-    
-    @classmethod
-    def search_businesses_by_title(cls,search):
-        return cls.objects.filter(name__icontains=search)
-
-
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=25)
     population = models.IntegerField()
     recommended_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     image = models.ImageField(default="default.jpg", upload_to="pictures")
     post_date = models.DateTimeField(auto_now_add=True, null=True)
-    business = models.ForeignKey(Business, on_delete=models.CASCADE, null=True)
-
 
     def get_absolute_url(self):
         return reverse('neighbourhood-detail', kwargs={'pk':self.pk})
@@ -67,3 +54,13 @@ class Neighbourhood(models.Model):
     @classmethod
     def show_businesses(cls):
         return cls.objects.order_by("post_date")[::1]
+
+class Business(models.Model):
+    name = models.CharField(max_length=25)
+    email = models.EmailField(max_length=250)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, null=True)
+    
+    @classmethod
+    def search_businesses_by_title(cls,search):
+        return cls.objects.filter(name__icontains=search)

@@ -96,6 +96,6 @@ def profile(request):
 def contactinfo(request):
     return render(request, "main/contactinfo.html")
 
-def businesses(request):
-    businesses = Business.objects.all()
+def businesses(request,id):
+    businesses = Business.objects.filter(neighbourhood=get_object_or_404(Neighbourhood,pk=id))
     return render(request, "main/business.html", context={"businesses":businesses})
