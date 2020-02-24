@@ -82,6 +82,7 @@ class NeighbourDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+@login_required
 def profile(request):
     if request.method == "POST":
         form = UserUpdateForm(request.POST,request.FILES, instance=request.user.profile)
@@ -93,14 +94,16 @@ def profile(request):
         form = UserUpdateForm(instance=request.user.profile)
     return render(request, "main/profile.html", context={"form":form})
 
+@login_required
 def contactinfo(request):
     return render(request, "main/contactinfo.html")
 
+@login_required
 def businesses(request,id):
     businesses = Business.objects.filter(neighbourhood=get_object_or_404(Neighbourhood,pk=id))
     return render(request, "main/business.html", context={"businesses":businesses})
 
-
+@login_required
 def search(request):
     if request.method == "GET":
         search_term = request.GET.get("search")
