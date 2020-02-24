@@ -24,6 +24,7 @@ class Profile(models.Model):
     image = models.ImageField(default="default.jpg", upload_to="pictures")
     bio = models.CharField(max_length=250, null=True)
     age = models.IntegerField(null=True)
+    neighbourhood =  models.CharField(max_length=30, null=True)
 
 class Post(models.Model):
     image = models.ImageField(default="default.jpg", upload_to="pictures")

@@ -10,6 +10,7 @@
                 <h1 class="account-heading">{{ user.username }}</h1>
                 <p class="text-secondary">{{ user.profile.bio }}</p>
                 <p class="text-secondary">{{ user.profile.age }}</p>
+                <p class="text-secondary">{{user.profile.neighbourhood}}</p>
             </div>
         </div>
     </div>
@@ -22,7 +23,7 @@
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-secondary" type="submit">Upload</button>
+            <button class="btn btn-secondary" type="submit">Set Up Profile</button>
         </div>
     </form>
     </div>

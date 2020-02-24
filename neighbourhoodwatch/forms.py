@@ -4,4 +4,4 @@ from neighbourhoodwatch.models import Profile
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'bio', 'age']
+        fields = ['image', 'bio', 'age', 'neighbourhood']
