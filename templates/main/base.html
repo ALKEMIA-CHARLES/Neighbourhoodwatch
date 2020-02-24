@@ -18,6 +18,11 @@
 
     <nav class="navbar navbar">
         <div class="container">
+            <form action="{%url 'search' %}" method="GET" class="form-inline">
+                <input name='search' class="form-control mr-sm-2" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-secondary" type="submit" >Search Businesses</button>
+            </form>
             <div>
                 <a href="{% url 'index' %}"> What's Happening</a>
             </div>

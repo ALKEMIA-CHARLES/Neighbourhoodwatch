@@ -99,3 +99,18 @@ def contactinfo(request):
 def businesses(request,id):
     businesses = Business.objects.filter(neighbourhood=get_object_or_404(Neighbourhood,pk=id))
     return render(request, "main/business.html", context={"businesses":businesses})
+
+
+def search(request):
+    if request.method == "GET":
+        search_term = request.GET.get("search")
+        searched_post = Business.search_businesses_by_name(search_term)
+        results = len(searched_post)
+        message = "{}".format(search_term)
+        
+        return render(request, "main/search.html", context={"message":message,
+                                                            "posts":searched_post,
+                                                            "results":results})
+    else:
+        message = "You have not searched for any user"
+        return render(request, "main/index.html", context={"message":message})

@@ -62,5 +62,5 @@ class Business(models.Model):
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, null=True)
     
     @classmethod
-    def search_businesses_by_title(cls,search):
+    def search_businesses_by_name(cls,search):
         return cls.objects.filter(name__icontains=search)

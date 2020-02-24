@@ -11,5 +11,6 @@ urlpatterns = [
       url(r'^neighbourhood/(?P<pk>\d+)/update/$', NeighbourUpdateView.as_view(), name='neighbourupdate'),
       url(r'^neighbourhood/(?P<pk>\d+)/delete/$', NeighbourDeleteView.as_view(), name='neighbourdelete'),
       url(r'businesses/(?P<id>\d+)/$', views.businesses, name='businesses'),
-      url(r'contactinformation/$', views.contactinfo, name='contactinfo')
+      url(r'contactinformation/$', views.contactinfo, name='contactinfo'),
+      url(r'^search/$', views.search, name="search"),
 ]
