@@ -9,43 +9,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {%block styles%}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     {% endblock %}
     <title>Neighbourhood watch</title>
 </head>
 
 <body>
 
-    <nav class="navbar navbar">
+    <nav class="navbar navbar" style="background-color: black; color: white;">
         <div class="container">
             <form action="{%url 'search' %}" method="GET" class="form-inline">
                 <input name='search' class="form-control mr-sm-2" type="search" placeholder="Search"
                     aria-label="Search">
-                <button class="btn btn-secondary" type="submit" >Search Businesses</button>
+                <button class="btn btn-secondary" type="submit" style="color: white;">Search Businesses</button>
             </form>
             <div>
-                <a href="{% url 'index' %}"> What's Happening</a>
+                <a href="{% url 'index' %}" style="color: white;"> What's Happening</a>
             </div>
             <div>
-                <a href="{% url 'neighbourhoodlist' %}">Check the neighbourhoods</a>
+                <a href="{% url 'neighbourhoodlist' %}" style="color: white;">Check the neighbourhoods</a>
             </div>
             <div>
-                <a href="{% url 'neighbourcreate' %}">Create a neighbourhood</a>
+                <a href="{% url 'neighbourcreate' %}" style="color: white;" >Create a neighbourhood</a>
             </div>
             <div>
                 {% if request.user.is_authenticated %}
                 <div>
-                    <a href="{% url 'profile'%}">Profile</a>
+                    <a href="{% url 'profile'%}" style="color: white;" >Profile</a>
                 </div>
                 <div>
-                    <a href="{% url 'post-create' %}">Report Something</a>
+                    <a href="{% url 'post-create' %}"  style="color: white;" >Report Something</a>
                 </div>
                 <div>
-                    <a href="{% url 'logout' %}">Logout</a>
+                    <a href="{% url 'logout' %}" style="color: white;">Logout</a>
                 </div>
                 {% else %}
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'register' %}">Register</a>
+                <a href="{% url 'login' %}" style="color: white;">Login</a>
+                <a href="{% url 'register' %}" style="color: white;">Register</a>
                 {% endif %}
             </div>
         </div>

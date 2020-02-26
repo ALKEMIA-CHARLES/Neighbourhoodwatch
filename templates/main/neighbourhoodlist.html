@@ -2,14 +2,19 @@
 {%block content%}
 <div class="container">
     {% for neighbourhood in neighbourhoods %}
-    <div class="card m-3 p-3">
+    <div class="card m-3 p-3" style="background-color: black;">
         <div class="card-body">
-            <p>{{neighbourhood.name}}</p>
-            <p><a href="{% url 'contactinfo' %}"> Contact information for this area</a></p>
-            <p> <a href="{% url 'businesses' neighbourhood.id %}">View businesses in this neighbourhood</a></p>
-            <p> <a href=" {% url 'neighbourhood-detail' neighbourhood.id %} ">View Neighbourhood</a></p>
+            <p style="color: white;" style="color: white;">{{neighbourhood.name}}</p>
+            <p style="color: white;"><a href="{% url 'contactinfo' %}" style="color: white;"> Contact information for
+                    this area</a></p>
+            <p> <a href="{% url 'businesses' neighbourhood.id %}" style="color: white;">View
+                    businesses in this
+                    neighbourhood</a></p>
+            <p style="color: white;"> <a href=" {% url 'neighbourhood-detail' neighbourhood.id %} "
+                    style="color: white; font-family: 'Indie Flower',;">View
+                    Neighbourhood</a></p>
             <img src="{{neighbourhood.image.url}}" class="img-fluid" />
-            <p>{{neighbourhood.post_date}}</p>
+            <p style="color: white;">{{neighbourhood.post_date}}</p>
         </div>
     </div>
     {% endfor %}
